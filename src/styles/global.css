@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'Fira Code', 'Roboto Mono', monospace;
+}
+
+.scanlines::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.05) 3px,
+    rgba(0, 0, 0, 0.05) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glitch {
+  animation: glitch 10s infinite;
+}
+
+@keyframes glitch {
+  0%,
+  85%,
+  100% {
+    text-shadow: none;
+    transform: none;
+  }
+  86% {
+    text-shadow: 3px 0 rgba(0, 255, 245, 0.55), -3px 0 rgba(255, 0, 100, 0.45);
+    transform: translateX(2px);
+  }
+  87% {
+    text-shadow: -3px 0 rgba(0, 255, 245, 0.55), 3px 0 rgba(255, 0, 100, 0.45);
+    transform: translateX(-1px);
+  }
+  88% {
+    text-shadow: none;
+    transform: none;
+  }
+  89% {
+    text-shadow: 2px 0 rgba(0, 255, 245, 0.35);
+    transform: translateX(1px);
+  }
+  90% {
+    text-shadow: none;
+    transform: none;
+  }
+}
