@@ -1,0 +1,23 @@
+---
+import { en } from '../../i18n/en';
+import Layout from '../../layouts/Layout.astro';
+import LangSwitcher from '../../components/LangSwitcher.astro';
+import Hero from '../../components/Hero.astro';
+import Terminal from '../../components/Terminal.astro';
+import Skills from '../../components/Skills.astro';
+import Experience from '../../components/Experience.astro';
+import Education from '../../components/Education.astro';
+import Contact from '../../components/Contact.astro';
+
+const t = en;
+---
+
+<Layout title={t.meta.title} description={t.meta.description} lang={t.lang}>
+  <LangSwitcher lang={t.lang} />
+  <Hero t={t.hero} />
+  <Terminal t={t.terminal} />
+  <Skills t={t.skills} />
+  <Experience t={t.experience} />
+  <Education t={t.education} />
+  <Contact t={t.contact} />
+</Layout>

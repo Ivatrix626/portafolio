@@ -1,9 +1,21 @@
+---
+interface Props {
+  t: {
+    label: string;
+    heading: string;
+    chromeTitle: string;
+    bio: string;
+  };
+}
+const { t } = Astro.props;
+---
+
 <section id="sobre-mi" class="py-24 px-6 bg-gray-950">
   <div class="max-w-3xl mx-auto">
     <p class="font-mono text-cyan-400/50 text-xs tracking-[0.3em] uppercase mb-3 text-center">
-      // sobre_mi.sh
+      {t.label}
     </p>
-    <h2 class="text-3xl font-bold text-white text-center mb-12">Sobre Mí</h2>
+    <h2 class="text-3xl font-bold text-white text-center mb-12">{t.heading}</h2>
 
     <div
       class="bg-[#0d1117] border border-gray-700/50 rounded-xl overflow-hidden shadow-2xl shadow-black/50"
@@ -14,13 +26,12 @@
         <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
         <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
         <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
-        <span class="font-mono text-xs text-gray-500 ml-3 select-none"
-          >bash — ivan@portfolio</span
-        >
+        <span class="font-mono text-xs text-gray-500 ml-3 select-none">{t.chromeTitle}</span>
       </div>
 
       <div
         id="terminal-output"
+        data-bio={t.bio}
         class="p-6 font-mono text-sm leading-relaxed min-h-36"
         aria-live="polite"
       >
@@ -31,8 +42,7 @@
 
 <script>
   const output = document.getElementById('terminal-output');
-  const bio =
-    'Entiendo la tecnología desde el router físico hasta el script. Combino experiencia resolviendo problemas en campo, con mi curiosidad y formación en Desarrollo de Aplicaciones Multiplataforma (DAM) y programación en Python (UOC).';
+  const bio = output?.dataset.bio ?? '';
 
   function sleep(ms: number) {
     return new Promise((r) => setTimeout(r, ms));

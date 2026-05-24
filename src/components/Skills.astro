@@ -1,26 +1,16 @@
 ---
-const categories = [
-  {
-    label: 'Sistemas y Redes',
-    code: '01',
-    accent: 'cyan' as const,
-    items: ['Mikrotik', 'Wimax', 'CGNAT', 'RADIUS', 'Linux', 'Ubiquiti', 'Cambium', 'Albentia', 'Netonix', 'Gestión de Red', 'Soporte clientes'],
-  },
-  {
-    label: 'Desarrollo',
-    code: '02',
-    accent: 'green' as const,
-    items: ['Python', 'Git', 'Automatización', 'IA', 'Experiencia con LLM'],
-  },
-  {
-    label: 'Hardware',
-    code: '03',
-    accent: 'amber' as const,
-    items: ['Mantenimiento HW/SW', 'IoT', 'Climax', 'Proview', 'Implementación de sistemas en entorno privado', 'Implementación de Domótica Privado/Empresarial'],
-  },
-];
+import type { SkillCategory } from '../i18n/types';
 
-const accent = {
+interface Props {
+  t: {
+    label: string;
+    heading: string;
+    categories: SkillCategory[];
+  };
+}
+const { t } = Astro.props;
+
+const accentClasses = {
   cyan: {
     label: 'text-cyan-400',
     topBorder: 'border-t-cyan-400/60',
@@ -36,20 +26,20 @@ const accent = {
     topBorder: 'border-t-amber-400/60',
     badge: 'hover:border-amber-400/60 hover:text-amber-300',
   },
-};
+} as const;
 ---
 
 <section id="habilidades" class="py-24 px-6 bg-black">
   <div class="max-w-5xl mx-auto">
     <p class="font-mono text-cyan-400/50 text-xs tracking-[0.3em] uppercase mb-3 text-center">
-      // core_skills.exe
+      {t.label}
     </p>
-    <h2 class="text-3xl font-bold text-white text-center mb-12">Habilidades Técnicas</h2>
+    <h2 class="text-3xl font-bold text-white text-center mb-12">{t.heading}</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
       {
-        categories.map((cat) => {
-          const a = accent[cat.accent];
+        t.categories.map((cat) => {
+          const a = accentClasses[cat.accent];
           return (
             <div
               class={`border-t-2 ${a.topBorder} border border-gray-700/40 bg-gray-900/40 rounded-xl p-6 hover:border-gray-600/60 transition-colors`}

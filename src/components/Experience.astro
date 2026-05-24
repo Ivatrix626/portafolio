@@ -1,65 +1,26 @@
 ---
-const jobs = [
-  {
-    index: '01',
-    title: 'Técnico de Alarmas',
-    company: 'Prosegur / Insyte',
-    summary: 'Configuración IoT, cámaras, centralitas y resolución autónoma en plataformas Climax/Proview.',
-    details: [
-      'Instalación y configuración de sistemas de alarma residenciales y empresariales.',
-      'Programación y puesta en marcha de centralitas en plataformas Climax y Proview.',
-      'Integración de dispositivos IoT: cámaras IP, sensores de movimiento y apertura.',
-      'Diagnóstico y resolución autónoma de incidencias técnicas en campo.',
-    ],
-  },
-  {
-    index: '02',
-    title: 'Técnico de Oficina',
-    company: 'AVATEL',
-    summary: 'Gestión de redes Wimax, Fibra, IP PBX y soporte IT remoto.',
-    details: [
-      'Administración y monitorización de infraestructura de red Wimax y fibra óptica.',
-      'Gestión y configuración de sistemas de telefonía IP PBX.',
-      'Soporte técnico remoto a clientes residenciales y empresariales.',
-      'Coordinación con equipos de campo para resolución de averías.',
-    ],
-  },
-  {
-    index: '03',
-    title: 'Instalador de Internet',
-    company: 'Icono Enterprise',
-    summary: 'Diagnóstico y resolución de averías en redes HFC.',
-    details: [
-      'Instalación de infraestructura HFC (Hybrid Fiber-Coaxial) en domicilios.',
-      'Diagnóstico y reparación de averías en planta externa e interna.',
-      'Configuración de ONTs, routers y equipos CPE.',
-      'Verificación de parámetros de señal y calidad de servicio.',
-    ],
-  },
-  {
-    index: '04',
-    title: 'Otros roles enfocados en el cliente',
-    company: 'NHotels · Repairpart',
-    summary: 'Atención al cliente, gestión de reservas y venta técnica de equipos.',
-    details: [
-      'Recepcionista en NHotels: gestión de reservas, check-in/check-out y atención multicanal.',
-      'Dependiente Técnico en Repairpart: asesoramiento, venta y reparación de consolas y periféricos.',
-      'Resolución de incidencias de primer nivel y gestión de garantías.',
-    ],
-  },
-];
+import type { Job } from '../i18n/types';
+
+interface Props {
+  t: {
+    label: string;
+    heading: string;
+    jobs: Job[];
+  };
+}
+const { t } = Astro.props;
 ---
 
 <section id="experiencia" class="py-24 px-6 bg-gray-950">
   <div class="max-w-4xl mx-auto">
     <p class="font-mono text-cyan-400/50 text-xs tracking-[0.3em] uppercase mb-3 text-center">
-      // experience.log
+      {t.label}
     </p>
-    <h2 class="text-3xl font-bold text-white text-center mb-12">Experiencia Laboral</h2>
+    <h2 class="text-3xl font-bold text-white text-center mb-12">{t.heading}</h2>
 
     <div class="flex flex-col gap-3">
       {
-        jobs.map((job) => (
+        t.jobs.map((job) => (
           <details class="group border border-gray-700/50 rounded-xl bg-gray-900/30 overflow-hidden hover:border-gray-600/70 transition-colors">
             <summary class="flex items-center justify-between px-6 py-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden select-none hover:bg-gray-800/30 transition-colors">
               <div class="flex items-start gap-4">

@@ -1,18 +1,23 @@
 ---
+import { es } from '../i18n/es';
 import Layout from '../layouts/Layout.astro';
+import LangSwitcher from '../components/LangSwitcher.astro';
 import Hero from '../components/Hero.astro';
 import Terminal from '../components/Terminal.astro';
 import Skills from '../components/Skills.astro';
 import Experience from '../components/Experience.astro';
 import Education from '../components/Education.astro';
 import Contact from '../components/Contact.astro';
+
+const t = es;
 ---
 
-<Layout>
-  <Hero />
-  <Terminal />
-  <Skills />
-  <Experience />
-  <Education />
-  <Contact />
+<Layout title={t.meta.title} description={t.meta.description} lang={t.lang}>
+  <LangSwitcher lang={t.lang} />
+  <Hero t={t.hero} />
+  <Terminal t={t.terminal} />
+  <Skills t={t.skills} />
+  <Experience t={t.experience} />
+  <Education t={t.education} />
+  <Contact t={t.contact} />
 </Layout>

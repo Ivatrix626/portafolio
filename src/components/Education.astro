@@ -1,57 +1,26 @@
 ---
-const education = [
-  {
-    index: '01',
-    title: 'Informática y Desarrollo',
-    items: [
-      {
-        degree: 'Desarrollo de Aplicaciones Multiplataforma (DAM) — 1er curso',
-        institution: 'IES Doctor Balmis — Alicante',
-      },
-      {
-        degree: 'Curso de Programación Python',
-        institution: 'UOC — Universitat Oberta de Catalunya',
-      },
-      {
-        degree: 'Sistemas Microinformáticos y Redes (SMR)',
-        institution: 'IES Paco Molla — Petrer',
-      },
-      {
-        degree: 'Seguridad Informática',
-        institution: 'Instituto Formación Permanente Alicante',
-      },
-    ],
-  },
-  {
-    index: '02',
-    title: 'Estudios Base',
-    items: [
-      { degree: 'Bachiller Científico', institution: 'IES — Monóvar' },
-      { degree: 'Educación Secundaria Obligatoria (E.S.O.)', institution: 'IES Enric Valor — Monóvar' },
-    ],
-  },
-  {
-    index: '03',
-    title: 'Idiomas y Permisos',
-    items: [
-      { degree: 'Inglés', institution: 'Nivel conversacional' },
-      { degree: 'Valenciano', institution: 'Nivel medio' },
-      { degree: 'Carnet de conducir B y A', institution: 'Vehículo propio' },
-    ],
-  },
-];
+import type { EducationBlock } from '../i18n/types';
+
+interface Props {
+  t: {
+    label: string;
+    heading: string;
+    blocks: EducationBlock[];
+  };
+}
+const { t } = Astro.props;
 ---
 
 <section id="formacion" class="py-24 px-6 bg-black">
   <div class="max-w-4xl mx-auto">
     <p class="font-mono text-cyan-400/50 text-xs tracking-[0.3em] uppercase mb-3 text-center">
-      // credentials.db
+      {t.label}
     </p>
-    <h2 class="text-3xl font-bold text-white text-center mb-12">Formación y Certificaciones</h2>
+    <h2 class="text-3xl font-bold text-white text-center mb-12">{t.heading}</h2>
 
     <div class="flex flex-col gap-3">
       {
-        education.map((block) => (
+        t.blocks.map((block) => (
           <details class="group border border-gray-700/50 rounded-xl bg-gray-900/30 overflow-hidden hover:border-gray-600/70 transition-colors">
             <summary class="flex items-center justify-between px-6 py-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden select-none hover:bg-gray-800/30 transition-colors">
               <div class="flex items-center gap-4">
